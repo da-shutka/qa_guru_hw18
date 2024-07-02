@@ -47,7 +47,7 @@ public class AuthorizationApi {
     }
 
     @Step("Получение {cookie} из установленных cookies")
-    public static String getCookies(String cookie) {
+    public static String getCookieByName(String cookie) {
         return getWebDriver().manage().getCookieNamed(cookie).getValue();
     }
 }

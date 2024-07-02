@@ -14,7 +14,7 @@ public class BookSpec {
 
     public static RequestSpecification addBookRequestSpec = with()
             .filter(withCustomTemplates())
-            .header("Authorization", "Bearer " + AuthorizationApi.getCookies(AuthorizationApi.TOKEN))
+            .header("Authorization", "Bearer " + AuthorizationApi.getCookieByName(AuthorizationApi.TOKEN))
             .contentType(JSON)
             .log().all();
 

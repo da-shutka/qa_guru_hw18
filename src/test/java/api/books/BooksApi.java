@@ -16,7 +16,7 @@ public class BooksApi {
         book.setIsbn(isbn);
 
         AddBookRequestModel bookData = new AddBookRequestModel();
-        bookData.setUserId(AuthorizationApi.getCookies(AuthorizationApi.USER_ID));
+        bookData.setUserId(AuthorizationApi.getCookieByName(AuthorizationApi.USER_ID));
         bookData.setCollectionOfIsbns(new IsbnModel[]{book});
 
         given(addBookRequestSpec)
