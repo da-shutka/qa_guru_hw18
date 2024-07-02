@@ -1,5 +1,6 @@
 package specs;
 
+import api.auth.AuthorizationApi;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
@@ -11,12 +12,13 @@ import static io.restassured.http.ContentType.JSON;
 
 public class BookSpec {
 
-    public static RequestSpecification bookAdditionSpec = with()
+    public static RequestSpecification addBookRequestSpec = with()
             .filter(withCustomTemplates())
+            .header("Authorization", "Bearer " + AuthorizationApi.getCookies(AuthorizationApi.TOKEN))
             .contentType(JSON)
             .log().all();
 
-    public static ResponseSpecification bookAdditionSuccessResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification addBookSuccessResponseSpec = new ResponseSpecBuilder()
             .expectStatusCode(201)
             .log(LogDetail.ALL)
             .build();
