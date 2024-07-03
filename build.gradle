@@ -7,11 +7,10 @@ plugins {
 group = 'ru.dpqa'
 version = '1.0-SNAPSHOT'
 
-def
-        allureVersion = "2.19.0",
-        unitVersion = "5.10.2",
-        restAssuredVersion = "5.4.0",
-        assertJsVersion = "3.25.3";
+def allureVersion = "2.19.0",
+    unitVersion = "5.10.2",
+    restAssuredVersion = "5.4.0",
+    assertJsVersion = "3.25.3";
 
 allure {
     report {
@@ -49,6 +48,7 @@ dependencies {
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {

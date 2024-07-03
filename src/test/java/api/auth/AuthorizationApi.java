@@ -4,18 +4,18 @@ import io.qameta.allure.Step;
 import models.LoginRequestModel;
 import models.LoginResponseModel;
 import org.openqa.selenium.Cookie;
+import properties.SystemProperties;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static specs.LoginSpec.loginRequestSpec;
 import static specs.LoginSpec.loginSuccessResponseSpec;
 
 public class AuthorizationApi {
 
-    private static final String login = "petrova_di",
-            password = "!DXbnBeb15";
+    private static final String login = SystemProperties.login,
+            password = SystemProperties.password;
 
     public static final String USER_ID = "userID",
             TOKEN = "token",

@@ -10,15 +10,18 @@ import pages.ProfilePage;
 public class DemoQATests extends TestBase {
 
     private final ProfilePage profilePage = new ProfilePage();
+    private final BooksApi book = new BooksApi();
 
     @Test
     @WithLogin
     @DisplayName("Удаление книги из списка на странице профиля пользователя")
-    public void DeleteBookFromTheList() throws InterruptedException {
+    public void DeleteBookFromTheList() {
+        String isbn = "9781449365035";
 
-        BooksApi book = new BooksApi();
-        book.addBookToProfile("9781449365035");
-        profilePage.deleteBook();
-        profilePage.checkBookIsDeleted();
+        book.addBookToProfile(isbn);
+        profilePage
+                .openPage()
+                .deleteBook()
+                .checkBookIsDeleted();
     }
 }
