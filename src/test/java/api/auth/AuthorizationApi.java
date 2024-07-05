@@ -9,8 +9,7 @@ import properties.SystemProperties;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static io.restassured.RestAssured.given;
-import static specs.LoginSpec.loginRequestSpec;
-import static specs.LoginSpec.loginSuccessResponseSpec;
+import static specs.DemoQASpec.*;
 
 public class AuthorizationApi {
 
@@ -28,12 +27,12 @@ public class AuthorizationApi {
         loginData.setUserName(login);
         loginData.setPassword(password);
 
-        return given(loginRequestSpec)
+        return given(requestSpec)
                 .body(loginData)
                 .when()
                 .post("/Account/v1/Login")
                 .then()
-                .spec(loginSuccessResponseSpec)
+                .spec(responseSpecWithStatusCode200)
                 .extract().as(LoginResponseModel.class);
     }
 

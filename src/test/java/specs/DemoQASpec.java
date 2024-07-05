@@ -2,23 +2,27 @@ package specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
-import static io.restassured.http.ContentType.JSON;
 
-public class LoginSpec {
+public class DemoQASpec {
 
-    public static RequestSpecification loginRequestSpec = with()
+    public static RequestSpecification requestSpec = with()
             .filter(withCustomTemplates())
-            .contentType(JSON)
+            .contentType(ContentType.JSON)
             .log().all();
 
-    public static ResponseSpecification loginSuccessResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification responseSpecWithStatusCode200 = new ResponseSpecBuilder()
             .expectStatusCode(200)
+            .log(LogDetail.ALL)
+            .build();
+
+    public static ResponseSpecification responseSpecWithStatusCode201 = new ResponseSpecBuilder()
+            .expectStatusCode(201)
             .log(LogDetail.ALL)
             .build();
 }

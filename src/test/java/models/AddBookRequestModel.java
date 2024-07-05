@@ -6,5 +6,5 @@ import lombok.Data;
 public class AddBookRequestModel {
 
     String userId;
-    IsbnModel[] collectionOfIsbns;
+    BookModel[] collectionOfIsbns;
 }

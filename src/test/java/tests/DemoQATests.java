@@ -21,6 +21,7 @@ public class DemoQATests extends TestBase {
         book.addBookToProfile(isbn);
         profilePage
                 .openPage()
+                .checkBookIsInProfile(isbn)
                 .deleteBook()
                 .checkBookIsDeleted();
     }

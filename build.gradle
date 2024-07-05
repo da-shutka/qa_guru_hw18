@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id "io.freefair.lombok" version "8.6"
-    id 'io.qameta.allure' version '2.10.0'
+    id 'io.qameta.allure' version '2.11.2'
 }
 
 group = 'ru.dpqa'
@@ -10,7 +10,7 @@ version = '1.0-SNAPSHOT'
 def allureVersion = "2.19.0",
     unitVersion = "5.10.2",
     restAssuredVersion = "5.4.0",
-    assertJsVersion = "3.25.3";
+    assertJsVersion = "3.25.3"
 
 allure {
     report {
@@ -43,11 +43,11 @@ dependencies {
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "org.assertj:assertj-core:$assertJsVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
-            'com.codeborne:selenide:7.3.1'
+            'com.codeborne:selenide:7.3.3'
     )
 }
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     systemProperties(System.getProperties())
     useJUnitPlatform()
 
